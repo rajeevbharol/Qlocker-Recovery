@@ -12,8 +12,8 @@ Steps:
 1) SSH to your NAS with admin account (Google it you will find youtube videos as well)
 2) Once in the NAS copy these two scripts to root directory using scp (google on how to if you don't know)
 3) In qunlocker.sh replace the password of you 7z files at line #3
-4) In the root directory run count7z.sh by running ./count7z.shd
-5) This will list and provide of all the 7z compressed files in the disk
+4) In the root directory run count7z.sh by running ./count7z.shd (This is optional)
+5) This will list and provide of all the 7z compressed files in the disk (Optional)
 6) Now run qunlock.sh by running ./qunlock.sh
 7) Wait for it to finish. It may take many hours or even depending upon how many files you may have.
 8) If it disconnects start with step 1 again.
