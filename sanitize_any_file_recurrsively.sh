@@ -12,8 +12,14 @@ find "$ROOT" -type f | while IFS= read -r filepath; do
     base=$(basename "$filepath")
 
     # Separate the last two extensions (e.g. .jpg.7z)
-    filename="${base%.*}"
-    ext1="${base##*.}"                  # e.g. 7z
+    # Check if filename has an extension
+    if [[ "$base" == *.* ]]; then
+        filename="${base%.*}"
+        ext1="${base##*.}"
+    else
+        filename="$base"
+        ext1=""
+    fi
 
     # Sanitize the filename part
     clean_name="$filename"
@@ -24,7 +30,12 @@ find "$ROOT" -type f | while IFS= read -r filepath; do
     clean_name="${clean_name//[\[\]]/_}" # square brackets
 
     # Construct new filename
-    newbase="${clean_name}.${ext1}"
+    if [[ -n "$ext1" ]]; then
+        newbase="${clean_name}.${ext1}"
+    else
+        newbase="$clean_name"
+    fi
+
     newpath="${dir}/${newbase}"
 
     # Rename only if the new name is different
